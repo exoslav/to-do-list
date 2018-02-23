@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import '../scss/index.scss'
+import Header from './components/Header'
+
 ReactDOM.render(
-	<div>test app asd sa sad</div>,
-	document.getElementById('app')
+  <Header />,
+  document.getElementById('app')
 )

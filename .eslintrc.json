@@ -1,9 +1,10 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest/globals": true
   },
-  "extends": "eslint:recommended",
+  "extends": "airbnb",
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -12,27 +13,40 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "jest"
   ],
   "rules": {
-    "indent": [
-      "error",
-      "tab"
-    ],
-		"no-console": [
-			"warn"
-		],
-    "linebreak-style": [
-      "error",
-      "windows"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "never"
-    ]
+    "indent": ["error", 2],
+		"no-console": ["warn"],
+    "linebreak-style": [0],
+    "semi": ["error", "never"],
+    "arrow-body-style": ["error", "as-needed"],
+    "class-methods-use-this": "off",
+    "comma-dangle": ["error", "never"],
+    "func-names": ["error", "as-needed"],
+    "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+    "max-len": ["error", { "code": 110, "ignoreTrailingComments": true, "ignoreUrls": true }],
+    "no-bitwise": "off",
+    "no-param-reassign": ["warn"],
+    "no-plusplus": "off",
+    "no-prototype-builtins": "off",
+    "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
+    "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+    "no-unneeded-ternary": ["error", { "defaultAssignment": true }],
+    "no-unused-vars": ["error", { "vars": "local", "args": "none" }],
+    "no-use-before-define": ["error", "nofunc"],
+    "object-shorthand": ["warn", "consistent-as-needed"],
+    "operator-linebreak": ["error", "after", { "overrides": { "?": "before", ":": "before" } }],
+    "padded-blocks": ["off", "never"],
+    "quote-props": ["error", "consistent-as-needed"],
+    "space-before-function-paren": ["error", { "anonymous": "never", "named": "never" }],
+    "vars-on-top": "warn",
+    "import/extensions": ["off", "always"],
+    "import/prefer-default-export": "off",
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+    "react/no-array-index-key": "warn",
+    "react/no-unused-prop-types": "off",
+    "react/style-prop-object": "off"
   }
 }
