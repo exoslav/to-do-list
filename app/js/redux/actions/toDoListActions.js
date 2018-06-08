@@ -1,14 +1,25 @@
-export const addToDo(toDoItem) ({
-  type: 'ADD_TODO',
-  toDoItem
-})
+import { getToDoItems, addToDoItem } from '../../services/fetchToDoItems'
 
-export const deleteToDo(id) ({
+export const addToDo = (toDoItem) => (dispatch) => {
+  dispatch({
+    type: 'ADD_TODO',
+    payload: addToDoItem(toDoItem)
+  })
+}
+
+export const deleteToDo = id => ({
   type: 'DELETE_TODO',
-  id
+  payload: id
 })
 
-export const addToDo(id) ({
+export const completeToDo = id => ({
   type: 'COMPLETE_TODO',
-  id
+  payload: id
 })
+
+export const fetchToDoItems = () => (dispatch) => {
+  dispatch({
+    type: 'FETCH_TODO_ITEMS',
+    payload: getToDoItems()
+  })
+}

@@ -1,0 +1,11 @@
+@import '../../../styles/colors.scss';
+
+.no-results {
+  display: flex;
+  align-items: center;
+}
+
+.message {
+  padding-left: 15px;
+  color: #a4a4a4;
+}

@@ -1,0 +1,41 @@
+@import '../../../../../styles/colors.scss';
+@import '../../../../../styles/constants.scss';
+
+.item {
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+
+  &:hover {
+    background: lighten(#00d7a1, 52%);
+
+    [data-role="icon-wrapper"] {
+      background: #fff;
+
+      path {
+        fill: #89cbf0 !important;
+      }
+    }
+  }
+}
+
+.icon-wrap {
+  flex-basis: $iconWidth;
+  margin-bottom: 7px;
+}
+
+.title {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 22px;
+  color: #131313;
+}
+
+.content-wrap {
+  flex: 1;
+  padding: 0 15px;
+  color: #a4a4a4;
+}
+

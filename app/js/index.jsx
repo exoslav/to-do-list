@@ -1,10 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { HashRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { renderRoutes } from 'react-router-config'
 
-import '../scss/index.scss'
-import Header from './components/Header'
+import '../styles/index.scss'
+
+import store from './redux/store'
+import routes from './routes'
 
 ReactDOM.render(
-  <Header />,
+  <HashRouter>
+    <Provider store={store}>
+      {renderRoutes(routes)}
+    </Provider>
+  </HashRouter>,
   document.getElementById('app')
 )

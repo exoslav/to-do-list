@@ -5,6 +5,7 @@
     "jest/globals": true
   },
   "extends": "airbnb",
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -16,6 +17,7 @@
     "jest"
   ],
   "rules": {
+    "strict": 0,
     "indent": ["error", 2],
 		"no-console": ["warn"],
     "linebreak-style": [0],
@@ -47,6 +49,7 @@
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "react/no-array-index-key": "warn",
     "react/no-unused-prop-types": "off",
-    "react/style-prop-object": "off"
+    "react/style-prop-object": "off",
+    "react/no-unknown-property": [2, { "ignore": ["class", "for"] }]
   }
 }

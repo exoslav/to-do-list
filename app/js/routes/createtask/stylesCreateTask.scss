@@ -1,0 +1,32 @@
+@import '../../../styles/constants.scss';
+
+.page {
+  padding: 20px 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 920px;
+
+  @media #{$tablet} {
+    padding: 0;
+  }
+}
+
+.headline {
+  font-weight: 300;
+  text-align: center;
+  color: #fff;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7a54d8+0,353375+100 */
+  background: #7a54d8; /* Old browsers */
+  background: -moz-linear-gradient(top, #7a54d8 0%, #353375 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #7a54d8 0%,#353375 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #7a54d8 0%,#353375 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7a54d8', endColorstr='#353375',GradientType=0 ); /* IE6-9 */
+}

@@ -1,4 +1,10 @@
 {
-  "plugins": ["react-html-attrs"],
-  "presets": ["env", "react"]
+  "presets": [
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "react-html-attrs",
+    "transform-object-rest-spread"
+  ]
 }

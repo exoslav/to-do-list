@@ -1,0 +1,29 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/constants.scss';
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 920px;
+
+  @media #{$tablet} {
+    padding: 0;
+  }
+}
+
+.container > div {
+  flex: 1;
+  background: none;
+}
+
+.task-bar {
+  background: $mainBlue-1;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2c2c65+0,523d9c+100 */
+  background: #2c2c65; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #2c2c65 0%, #523d9c 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #2c2c65 0%,#523d9c 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #2c2c65 0%,#523d9c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c65', endColorstr='#523d9c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+

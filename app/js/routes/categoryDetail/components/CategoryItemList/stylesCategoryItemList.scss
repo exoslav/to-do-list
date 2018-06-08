@@ -1,0 +1,16 @@
+@import '../../../../../styles/colors';
+
+.title {
+  color: #999cad;
+  font-size: 30px;
+  text-align: center;
+}
+
+.category-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category-items > li {
+  width: 50%;
+}

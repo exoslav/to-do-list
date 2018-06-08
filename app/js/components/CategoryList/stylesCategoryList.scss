@@ -1,0 +1,19 @@
+@import '../../../styles/constants.scss';
+
+.list {
+  display: flex;
+}
+
+.list > li {
+  flex: 1;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 920px;
+
+  @media #{$tablet} {
+    padding: 0;
+  }
+}

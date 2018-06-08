@@ -1,0 +1,13 @@
+@import '../../../styles/constants.scss';
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 920px;
+
+  @media #{$tablet} {
+    padding: 0;
+  }
+}
+

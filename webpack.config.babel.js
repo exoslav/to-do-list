@@ -14,18 +14,25 @@ export default () => {
     module: {
       rules: [
         {
-          test: /\.jsx$/,
+          test: /\.(jsx|js)$/,
           include: [
             path.resolve(__dirname, 'app')
           ],
           exclude: /node_modules/,
           loader: 'babel-loader',
           query: {
-            cacheDirectory: true,
-            presets: ['env', 'react']
+            cacheDirectory: true
           }
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|svg)$/,
+          loader: 'file-loader?name=fonts/[name].[ext]'
+        },
+        {
+          test: /\.(png|jpg)$/,
+          loader: 'url-loader'
         }
-      ],
+      ]
     },
     plugins: [],
     devServer: {
@@ -34,7 +41,7 @@ export default () => {
     },
     devtool: isProd ? 'source-map' : 'eval-source-map',
     resolve: {
-      extensions: ['.js', '.jsx', '.json']
+      extensions: ['.js', '.jsx', '.json', '.css']
     },
   }
 

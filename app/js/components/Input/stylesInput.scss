@@ -1,0 +1,82 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/constants.scss';
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 20px;
+
+  &.width50 {
+    flex-basis: calc(50% - 10px);
+  }
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: $fontColor;
+  outline: none;
+  border: 1px solid #c5c5c5;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.focused {
+  border-color: darken(#c5c5c5, 20%);
+}
+
+.input::placeholder {
+  color: #999cad;
+  opacity: 1;
+}
+
+.input:-ms-input-placeholder {
+  color: #999cad;
+}
+
+.input::-ms-input-placeholder {
+  color: #999cad;
+}
+
+.label {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  text-indent: -99999px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 1px;
+    width: 1px;
+    height: 18px;
+    background: darken(#c5c5c5, 20%);
+  }
+
+  &:after {
+    transform: rotate(45deg);
+  }
+
+  &:before {
+    transform: rotate(-45deg);
+  }
+}

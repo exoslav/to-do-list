@@ -1,0 +1,82 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/constants.scss';
+
+.container {
+  display: flex;
+}
+
+.header {
+  display: flex;
+  background: url("../../../../resources/images/pattern.svg") top right;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex: 3;
+}
+
+.currentDate {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  margin-bottom: 15px;
+  font-weight: 100;
+  font-size: 40px;
+  color: #fff;
+}
+
+.statsOuter {
+  flex: 1;
+  background: rgba(0, 0, 0, .15);
+}
+
+.statsInner {
+  padding: 50px 30px;
+}
+
+.categories-list {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.categories-list-item-link {
+  text-decoration: none;
+}
+
+.category-total {
+  margin-bottom: 5px;
+
+  font-size: 26px;
+}
+
+.category-title {
+  color: #d5d5d5;
+}
+
+.completed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: darken($mainWhite, 30%);
+}
+
+.percentage-circle {
+  flex-basis: 40px;
+  padding-right: 10px;
+}

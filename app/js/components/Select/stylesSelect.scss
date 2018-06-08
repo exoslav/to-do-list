@@ -1,0 +1,147 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/constants.scss';
+
+.select-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  &.width50 {
+    flex-basis: calc(50% - 10px);
+  }
+}
+
+.input-decoy {
+  composes: input from 'sass-loader!../Input/stylesInput.scss';
+  position: relative;
+  padding-left: 35px;
+  color: #999cad;
+  text-align: left;
+  cursor: pointer;
+  background: none;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 4px);
+    left: 10px;
+    border-style: solid;
+    border-width: 8px 8px 0 8px;
+    border-color: #999cad transparent transparent transparent;
+  }
+}
+
+.input-decoy-active {
+  border-color: darken(#c5c5c5, 20%);
+
+  &:before {
+    border-color: $fontColor transparent transparent transparent;
+  }
+}
+
+.input-decoy-has-value {
+  color: $fontColor;
+}
+
+.label {
+  composes: label from 'sass-loader!../Input/stylesInput.scss';
+}
+
+.options-list-wrap {
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 0 10px -5px #333;
+  opacity: 0;
+  transition: .5s all;
+  z-index: 1;
+}
+
+.options-list-wrap-scrollable {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.options-list-wrap-fadeIn {
+  transform: translateY(30px);
+  opacity: 1;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.options-list-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &:hover {
+    background: lighten(#00d7a1, 45%);
+  }
+}
+
+.options-list-footer {
+  text-align: right;
+  padding: 10px;
+  background: #f0f0f0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.options-list-close {
+  font-size: 16px;
+  color: darken(#f0f0f0, 40%);
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    color: darken(#f0f0f0, 60%);
+  }
+}
+
+.select {
+  display: none;
+}
+
+.button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  text-indent: -99999px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 1px;
+    width: 1px;
+    height: 18px;
+    background: darken(#c5c5c5, 20%);
+  }
+
+  &:after {
+    transform: rotate(45deg);
+  }
+
+  &:before {
+    transform: rotate(-45deg);
+  }
+}

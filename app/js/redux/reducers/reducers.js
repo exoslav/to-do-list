@@ -1,6 +1,12 @@
 import { combineReducers } from 'redux'
+import userReducer from './userReducer'
 import toDoListReducer from './toDoListReducer'
+import locationSearch from './locationSearch'
+import categoriesReducer from './categoriesReducer'
 
 export default combineReducers({
-  toDoList: toDoListReducer
+  user: userReducer,
+  categories: categoriesReducer,
+  toDoList: toDoListReducer,
+  locationSearch: locationSearch
 })

@@ -1,0 +1,28 @@
+@import '../../../styles/colors.scss';
+
+.item {
+  display: flex;
+  padding: 30px 20px;
+  border-right: 1px solid #ededf5;
+  border-bottom: 1px solid #ededf5;
+  background: #f5f6fb;
+}
+
+.icon {
+  flex: 1;
+  flex-basis: 20%;
+  text-align: center;
+}
+
+.content-text {
+  flex: 2;
+  flex-basis: 80%;
+}
+
+.title {
+  color: #555160;
+}
+
+.tasks {
+  color: lighten(#555160, 15%)
+}

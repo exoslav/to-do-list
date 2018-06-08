@@ -1,0 +1,21 @@
+@import '../../../styles/colors.scss';
+
+.task-status {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  color: lighten($mainBlue-1, 25%);
+  background: $mainBlue-1;
+  text-transform: capitalize;
+}
+
+.quantity {
+  flex-basis: 20%;
+  font-size: 27px;
+  text-align: right;
+}
+
+.title {
+  flex-basis: 75%;
+}
