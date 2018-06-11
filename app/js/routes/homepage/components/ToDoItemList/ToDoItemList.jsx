@@ -1,65 +1,70 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import css from './stylesToDoItemList.scss'
+import injectSheet from 'react-jss'
+import css from './cssToDoItemList'
 import ToDoItem from '../../../../components/ToDoItem/ToDoItem'
 import NoResults from '../../../../components/NoResults/NoResults'
 
-const ToDoItemList = props => (
-  <div class={`${css['time-block']} ${css[props.className]}`}>
-    <h3 class={`${css['time-block-title']}`}>
-      {props.title}
-    </h3>
+const ToDoItemList = props => {
+  const { classes } = props
 
-    {
-      !props.toDoItems.length &&
-      <div class={css['no-results-wrap']}>
-        <NoResults
-          message={props.message}
-        />
-      </div>
-    }
+  return (
+    <div class={classes.timeBlock}>
+      <h3 class={`${classes.title}`}>
+        {props.title}
+      </h3>
 
-    {
-      props.toDoItems.length > 0 &&
-      <ul>
-        {console.log('ToDoItemList RENDER')}
-        {props.toDoItems.map((toDoItem, index) => (
-          <ToDoItem
-            key={index}
-            className={props.className}
-            categoryIcon="CHECKMARK"
-            categoryTitle={toDoItem.categoryTitle}
-            title={toDoItem.title}
-            content={toDoItem.content}
-            date={toDoItem.date}
-            slug={toDoItem.slug}
+      {
+        !props.toDoItems.length &&
+        <div class={classes.noResultsWrap}>
+          <NoResults
+            message={props.message}
           />
-        ))}
+        </div>
+      }
 
-        {
-          !props.expanded && props.hiddenToDoItems && props.translate &&
-          <li>
-            <a
-              class={css['more-items-item']}
-              href="#"
-              onClick={props.handleExpanse}
-            >
-              <span class={css['more-items-icon']}>
-                <span class={css['more-items-icon-dot']}>.</span>
-                <span class={css['more-items-icon-dot']}>.</span>
-                <span class={css['more-items-icon-dot']}>.</span>
-              </span>
+      {
+        props.toDoItems.length > 0 &&
+        <ul>
+          {props.toDoItems.map((toDoItem, index) => (
+            <ToDoItem
+              key={index}
+              className={props.className}
+              themeColor={props.themeColor}
+              categoryIcon="CHECKMARK"
+              categoryTitle={toDoItem.categoryTitle}
+              title={toDoItem.title}
+              content={toDoItem.content}
+              date={toDoItem.date}
+              slug={toDoItem.slug}
+            />
+          ))}
 
-              <span class={css['more-items-icon-text']}>
-                {`Show ${props.hiddenToDoItems} more ${props.translate.showMoreToDos}.`}
-              </span>
-            </a>
-          </li>
-        }
-      </ul>
-    }
-  </div>
-)
+          {
+            !props.expanded && props.hiddenToDoItems && props.translate &&
+            <li>
+              <a
+                class={classes.showMore}
+                href="#"
+                onClick={props.handleExpanse}
+              >
+                <span class={classes.showMoreIcon}>
+                  <span class={classes.showMoreIconDot}>.</span>
+                  <span class={classes.showMoreIconDot}>.</span>
+                  <span class={classes.showMoreIconDot}>.</span>
+                </span>
+
+                <span class={classes.showMoreText}>
+                  {`Show ${props.hiddenToDoItems} more ${props.translate.showMoreToDos}.`}
+                </span>
+              </a>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  )
+}
 
 ToDoItemList.defaultProps = {
   title: '',
@@ -68,7 +73,8 @@ ToDoItemList.defaultProps = {
   hiddenToDoItems: null,
   translate: {},
   message: null,
-  handleExpanse: () => null
+  handleExpanse: () => null,
+  css: {}
 }
 
 ToDoItemList.propTypes = {
@@ -88,8 +94,9 @@ ToDoItemList.propTypes = {
     completed: PropTypes.bool,
     date: PropTypes.number,
     category: PropTypes.number,
-    categoryTitle: PropTypes.string
-  }))
+    categoryTitle: PropTypes.string,
+  })),
+  css: PropTypes.shape({})
 }
 
-export default ToDoItemList
+export default injectSheet(css)(ToDoItemList)

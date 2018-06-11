@@ -62,6 +62,7 @@ export default class ToDoItemListContainer extends React.Component {
       <ToDoItemList
         title={this.props.blockItem.title}
         className={this.props.blockItem.className}
+        themeColor={this.props.blockItem.themeColor}
         toDoItems={this.reduceItems(this.props.blockItem.items)}
         expanded={this.state.expanded}
         hiddenToDoItems={this.state.hiddenToDoItems}

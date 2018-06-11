@@ -17,19 +17,19 @@ const template = [
     title: TODAY,
     items: [],
     message: TODAY_NO_RESULT_MESSAGE,
-    className: 'green'
+    themeColor: '#00d7a1'
   },
   {
     title: TOMORROW,
     items: [],
     message: TOMORROW_NO_RESULT_MESSAGE,
-    className: 'blue'
+    themeColor: '#31ace3'
   },
   {
     title: UPCOMING,
     items: [],
     message: UPCOMING_NO_RESULT_MESSAGE,
-    className: 'pink'
+    themeColor: '#ef5288'
   }
 ]
 

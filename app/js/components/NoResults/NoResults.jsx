@@ -1,21 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import css from './NoResultsStyles.scss'
+import injectSheet from 'react-jss'
+import css from './stylesNoResults'
 import Icon from '../Icon/Icon'
 
-export default class NoResults extends React.PureComponent {
+class NoResults extends React.PureComponent {
   render() {
     return (
-      <div class={css['no-results']}>
+      <div class={this.props.classes.noResults}>
         <Icon
-          className=""
           icon={this.props.icon}
-          color="#cbcbcb"
+          css={{
+            padding: '0',
+            iconColor: '#cbcbcb'
+          }}
           width={50}
           height={50}
-          styles={{ padding: 0 }}
         />
-        <p class={css.message}>{`${this.props.message}`}</p>
+        <p class={this.props.classes.message}>
+          {this.props.message}
+        </p>
       </div>
     )
   }
@@ -30,3 +34,5 @@ NoResults.propTypes = {
   message: PropTypes.string,
   icon: PropTypes.string
 }
+
+export default injectSheet(css)(NoResults)

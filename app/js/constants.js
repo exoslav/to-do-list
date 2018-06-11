@@ -15,7 +15,7 @@ export const ICONS = [
 ]
 
 export const COLORS = {
-  ICON_COLOR: '#fff'
+  ICON_COLOR: '#131313'
 //  ICON_COLOR: '#89cbf0'
 }
 

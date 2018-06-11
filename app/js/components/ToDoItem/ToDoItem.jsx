@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import css from './stylesToDoItem.scss'
+import injectSheet from 'react-jss'
+import css from './stylesToDoItem'
 import Icon from '../Icon/Icon'
 
 function toMeridiemTime(date) {
@@ -19,53 +20,43 @@ function toMeridiemTime(date) {
     : `${hours}:${minutes} PM`
 }
 
-export default class ToDoItem extends React.PureComponent {
+class ToDoItem extends React.PureComponent {
   render() {
-    let itemClassName = `${css.item} `
-
-    itemClassName += this.props.className
-      ? css[`item-${this.props.className}`]
-      : ''
-
     return (
-      <li class={itemClassName}>
+      <li class={this.props.classes.item}>
         <Link
-          className={css.link}
+          class={this.props.classes.link}
           to={this.props.slug}
         >
-          <div class={css['icon-wrap']}>
+          <div class={this.props.classes.iconWrap}>
             <Icon
               icon="CHECKMARK"
-              className={this.props.className}
+              css={{
+                backgroundColorHover: this.props.themeColor,
+                border: `1px solid  ${this.props.themeColor}`,
+                iconColor: this.props.themeColor,
+                iconColorHover: '#fff'
+              }}
             />
           </div>
 
-          <div class={css['content-wrap']}>
-            <strong class={css.title}>{this.props.title}</strong>
-            <p class={css.content}>
-            <span class={css.category}>
-              {/*<Icon*/}
-              {/*width="16px"*/}
-              {/*height="16px"*/}
-              {/*icon={this.props.categoryIcon}*/}
-              {/*styles={{ padding: 0, marginRight: '5px', background: 'none' }}*/}
-              {/*className={this.props.className}*/}
-              {/*color="#a4a4a4"*/}
-              {/*/>*/}
-
-              <span>
-                {this.props.categoryTitle}
+          <div class={this.props.classes.contentWrap}>
+            <strong class={this.props.classes.title}>{this.props.title}</strong>
+            <p class={this.props.classes.content}>
+              <span class={this.props.classes.category}>
+                <span>
+                  {this.props.categoryTitle}
+                </span>
               </span>
-            </span>
 
 
-              <span class={css.delimeter}>~</span>
+              <span class={this.props.classes.delimeter}>~</span>
 
               {this.props.content}
             </p>
           </div>
 
-          <div class={css['date-wrap']}>
+          <div class={this.props.classes.dateWrap}>
             {
               toMeridiemTime(this.props.date)
             }
@@ -77,19 +68,15 @@ export default class ToDoItem extends React.PureComponent {
 }
 
 ToDoItem.defaultProps = {
-  date: '',
-  title: '',
-  content: '',
-  categoryIcon: 'HOME',
-  className: '',
-  slug: ''
+  categoryIcon: 'HOME'
 }
 
 ToDoItem.propTypes = {
-  date: PropTypes.number,
-  title: PropTypes.string,
-  content: PropTypes.string,
-  categoryIcon: PropTypes.string,
-  className: PropTypes.string,
-  slug: PropTypes.string
+  date: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  categoryIcon: PropTypes.string
 }
+
+export default injectSheet(css)(ToDoItem)
