@@ -6,21 +6,18 @@ import css from './stylesToDoItem'
 import Icon from '../Icon/Icon'
 
 function toMeridiemTime(date) {
-  const hours = new Date(date).getHours() < 10
-    ? `0${new Date(date).getHours()}`
-    : new Date(date).getHours()
+  const hours = new Date(date).getHours().toString().padStart(2, '0')
+  const minutes = new Date(date).getMinutes().toString().padStart(2, '0')
 
-  const minutes = new Date(date).getMinutes() < 10
-    ? `0${new Date(date).getMinutes()}`
-    : new Date(date).getMinutes()
-
-
-  return hours < 12
-    ? `${hours}:${minutes} AM`
-    : `${hours}:${minutes} PM`
+  return `${hours}:${minutes} ${hours < 12 ? '&nbsp;AM' : '&nbsp;PM'}`
 }
 
 class ToDoItem extends React.PureComponent {
+  handleOnClickIcon(e) {
+    e.stopPropagation()
+    e.preventDefault()
+  }
+
   render() {
     return (
       <li class={this.props.classes.item}>
@@ -28,7 +25,10 @@ class ToDoItem extends React.PureComponent {
           class={this.props.classes.link}
           to={this.props.slug}
         >
-          <div class={this.props.classes.iconWrap}>
+          <div
+            onClick={this.handleOnClickIcon}
+            class={this.props.classes.iconWrap}
+          >
             <Icon
               icon="CHECKMARK"
               css={{

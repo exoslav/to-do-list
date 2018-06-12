@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import Date from 'date-fns'
 import ToDoItemListContainer from '../components/ToDoItemList/ToDoItemListContainer'
 import * as toDoListActions from '../../../redux/actions/toDoListActions'
 
@@ -75,6 +76,7 @@ export default connect(store => ({
 
 
 function fetchData(toDoItems, categories) {
+
   return toDoItems
     .filter(toDoItem => !toDoItem.completed)
     .map(toDoItem => ({
@@ -84,6 +86,8 @@ function fetchData(toDoItems, categories) {
     }))
     .reduce((prev, curr) => {
       let blockItemName = null
+
+      console.log(Date.parse(curr.date))
 
       if (checkDateWithDayOffset(curr.date, 0)) {
         blockItemName = TODAY
@@ -101,12 +105,17 @@ function fetchData(toDoItems, categories) {
     }, template)
 }
 
+function isToday(inputDate) {
+  return new Date(inputDate).setHours(0) === new Date().setHours(0)
+}
+
+
 function checkDateWithDayOffset(inputDate, dayOffset) {
-  return new Date(inputDate).getDate() === new Date().getDate() + dayOffset
+  return new Date(inputDate).getTime() === new Date().getTime() + dayOffset
 }
 
 function checkIfInputDateIsGreaterThen(inputDate, dayOffset) {
-  return new Date(inputDate).getDate() > new Date().getDate() + dayOffset
+  return new Date(inputDate).getTime() > new Date().getTime() + dayOffset
 }
 
 function createSlugForToDoItem(categories, toDoItem) {
