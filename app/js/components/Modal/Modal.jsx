@@ -1,38 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import injectSheet from 'react-jss'
+
 import Icon from '../Icon/Icon'
 import Container from '../../components/Container/Container'
-import css from './stylesModal.scss'
+import css from './cssModal'
 
-export default class Modal extends React.Component {
-  constructor() {
-    super()
-
-    this.closeModal = this.closeModal.bind(this)
-  }
-
-  closeModal() {
-    this.props.handleClose()
-  }
-
-  render() {
-    return (
-      <div class={css.modal}>
-        <Container>
-          <div class={css['modal-content']}>
-            <button
-              onClick={this.closeModal}
-              class={css.button}
-            >
-              <Icon icon="CROSS" />
-            </button>
-            {this.props.children}
-          </div>
-        </Container>
+const Modal = props => (
+  <div class={props.classes.modal}>
+    <Container>
+      <div class={props.classes.modalContent}>
+        <button
+          onClick={props.closeModal}
+          class={props.classes.button}
+        >
+          <Icon icon="CROSS" />
+        </button>
+        {props.children}
       </div>
-    )
-  }
-}
+    </Container>
+  </div>
+)
 
 Modal.defaultProps = {
   children: <div />,
@@ -43,3 +31,5 @@ Modal.propTypes = {
   children: PropTypes.element,
   handleClose: PropTypes.func
 }
+
+export default injectSheet(css)(Modal)

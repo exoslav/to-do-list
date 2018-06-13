@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Header from '../../components/Header/Header'
 import HeaderContent from './components/HeaderContent/HeaderContent'
 import { getDayName, getMonthName } from '../../helpers/date'
 
-export default class HeaderConnecter extends React.Component {
+class HeaderConnecter extends React.Component {
   constructor() {
     super()
 
@@ -32,7 +33,7 @@ export default class HeaderConnecter extends React.Component {
           time: date.toLocaleTimeString()
         }
       })
-    }, 1000)
+    }, 999999999)
   }
 
   componentWillUnmount() {
@@ -40,6 +41,7 @@ export default class HeaderConnecter extends React.Component {
   }
 
   render() {
+    console.log(this)
     return (
       <Header
         content={<HeaderContent name="Martin" />}
@@ -47,6 +49,7 @@ export default class HeaderConnecter extends React.Component {
         categoriesTotal={this.props.categoriesTotal}
         toDoItemsTotal={this.props.toDoItemsTotal}
         completed={this.props.completed}
+        handleCreateToDoClick={this.props.handleCreateToDoClick}
       />
     )
   }
@@ -68,3 +71,4 @@ HeaderConnecter.propTypes = {
   handleCreateToDoClick: PropTypes.func
 }
 
+export default HeaderConnecter

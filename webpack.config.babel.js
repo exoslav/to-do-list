@@ -53,7 +53,7 @@ export default () => {
           'fallback': 'style-loader',
           use: [
             {
-              loader: 'css-loader',
+              loader: 'jss-loader',
               options: {
                 modules: true,
                 localIdentName: '[name]__[local]__[hash:base64:5]',
@@ -80,7 +80,7 @@ export default () => {
             loader: 'style-loader' // creates style nodes from JS strings
           },
           {
-            loader: 'css-loader',
+            loader: 'jss-loader',
             query: {
               modules: true,
               localIdentName: '[name]__[local]__[hash:base64:5]' // this is used for CSS-modules classNames

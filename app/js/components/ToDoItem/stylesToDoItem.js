@@ -1,3 +1,4 @@
+/* eslint-disable quote-props */
 import color from 'color'
 import { iconWidth } from '../../../styles/constants'
 

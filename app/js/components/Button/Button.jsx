@@ -1,36 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import css from './stylesButton.scss'
+import injectSheet from 'react-jss'
+import css from './cssButton'
 
-export default class Button extends React.PureComponent {
-  render() {
-    let className = css.button
-
-    if (this.props.className === 'widthAuto') {
-      className += ` ${css.widthAuto}`
-    }
-
-
-    return (
-      <button
-        type={this.props.type}
-        onClick={this.props.click}
-        class={className}
-      >
-        {this.props.content}
-      </button>
-    )
-  }
-}
+const Button = props => (
+  <button
+    type={props.type}
+    onClick={props.click}
+    class={props.classes.button}
+  >
+    {props.content}
+  </button>
+)
 
 
 Button.defaultProps = {
   type: 'submit',
-  click: () => null
+  click: () => null,
+  classes: {}
 }
 
 Button.propTypes = {
   type: PropTypes.string,
   click: PropTypes.func,
-  content: PropTypes.string.isRequired
+  content: PropTypes.string.isRequired,
+  classes: PropTypes.shape({})
 }
+
+export default injectSheet(css)(Button)

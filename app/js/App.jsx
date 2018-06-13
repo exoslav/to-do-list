@@ -10,8 +10,6 @@ const App = (props) => {
 
   return (
     <div>
-      {console.log(props)}
-      {console.log(branch)}
       <div>
         {
           branch.route.id === 'HOMEPAGE' &&
