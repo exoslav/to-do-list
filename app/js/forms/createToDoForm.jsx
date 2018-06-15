@@ -44,6 +44,7 @@ export default categories => [
         { value: '23', title: '23 PM' }
       ],
       minutes: [
+        { value: '00', title: '00m' },
         { value: '15', title: '15m' },
         { value: '30', title: '30m' },
         { value: '45', title: '45m' }

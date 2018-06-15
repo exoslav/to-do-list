@@ -2,35 +2,31 @@
 
 import { input, label } from '../../jss/shared'
 
-const inputDecoy = {
-  ...input,
-  position: 'relative',
-  paddingLeft: 35,
-  color: '#999cad',
-  textAlign: 'left',
-  cursor: 'pointer',
-  background: 'none',
-  '&:before': {
-    content: '',
-    position: 'absolute',
-    top: 'calc(50% - 4px)',
-    left: 10,
-    borderStyle: 'solid',
-    borderWidth: '8px 8px 0 8px',
-    borderColor: '#999cad transparent transparent transparent'
-  }
-}
-
 export default {
   selectWrap: {
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
     marginBottom: 20
   },
-  inputDecoy,
+  inputDecoy: {
+    ...input,
+    position: 'relative',
+    paddingLeft: 35,
+    color: '#999cad',
+    textAlign: 'left',
+    cursor: 'pointer',
+    background: 'none',
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      top: 'calc(50% - 4px)',
+      left: 10,
+      borderStyle: 'solid',
+      borderWidth: '8px 8px 0 8px',
+      borderColor: '#999cad transparent transparent transparent'
+    }
+  },
   inputDecoyActive: {
-    borderColor: '#000',
+    borderColor: '#929292',
     '&:before': {
       borderColor: '#212121 transparent transparent transparent'
     }
@@ -52,13 +48,13 @@ export default {
     cursor: 'pointer',
     outline: 'none',
     '&:after, &:before': {
-      content: '',
+      content: '""',
       position: 'absolute',
       left: 10,
       top: 1,
       width: 1,
       height: 18,
-      background: '#000'
+      background: '#929292'
     },
     '&:after': {
       transform: 'rotate(45deg)'

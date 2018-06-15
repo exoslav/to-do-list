@@ -36,12 +36,13 @@ class Select extends React.PureComponent {
     this.props.handleChange(this.props.name, option.value)
 
     this.setState({
+      openSelectList: false,
       selectedValue: option.title
     })
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
 
     return (
       <div
@@ -52,6 +53,7 @@ class Select extends React.PureComponent {
         <label
           class={classes.label}
           for={this.props.name}
+          onClick={this.openSelectList}
         >
           {`${this.props.label}:`}
         </label>

@@ -5,7 +5,7 @@ const defaultButtonColor = '#00d7a1'
 
 export default {
   button: {
-    width: '100%',
+    width: props => props.css.width,
     padding: '12px 20px',
     color: 'white',
     textTransform: 'uppercase',
@@ -20,7 +20,3 @@ export default {
     }
   }
 }
-
-//.button.widthAuto {
-//  width: auto;
-//}

@@ -7,9 +7,9 @@ import * as qs from 'query-string'
 
 import HeaderContainer from '../HeaderContainer'
 import Modal from '../../../components/Modal/Modal'
-import Form from '../../../components/Form/Form'
 import createToDoFormData from '../../../forms/createToDoForm'
 import * as toDoListActions from '../../../redux/actions/toDoListActions'
+import CreateToDoFormContainer from '../containers/CreateToDoFormContainer'
 
 const homepageUrl = '/'
 const modalUrl = '/?createTodo=true'
@@ -41,26 +41,14 @@ class HeaderConnecter extends React.Component {
       <div>
         {
           this.locationSearch.createTodo === 'true' &&
-          <Modal
-            closeModal={this.closeModal}
-          >
-            <Form
-              title="Create ToDo"
-              handleSubmit={() => null}
-              fields={createToDoFormData(this.props.categories.map(category => (
-                {
-                  value: category.id,
-                  title: `${category.title} (${category.toDoListTotal})`,
-                  icon: category.icon
-                }
-              )))}
-            />
+          <Modal closeModal={this.closeModal}>
+            <CreateToDoFormContainer fields={this.props.formFields} />
           </Modal>
         }
 
         <HeaderContainer
           completed={this.props.completed}
-          categoriesTotal={this.props.categoriesTotal}
+          categoriesTotal={this.props.categories.length}
           toDoItemsTotal={this.props.toDoItemsTotal}
           handleCreateToDoClick={this.handleClick}
           locationSearch={this.props.location.search}
@@ -90,9 +78,16 @@ const mapStateToProps = (store) => {
   return {
     locationSearch: store.locationSearch,
     name: store.user.name,
-    categoriesTotal: store.categories.length,
+    categories: store.categories,
     toDoItemsTotal: store.toDoList.length,
-    completed: Math.floor(parseFloat(100 / (store.toDoList.length / store.toDoList.filter(toDoItem => toDoItem.completed).length))) // eslint-disable-line max-len
+    completed: Math.floor(parseFloat(100 / (store.toDoList.length / store.toDoList.filter(toDoItem => toDoItem.completed).length))), // eslint-disable-line max-len
+    formFields: createToDoFormData(store.categories.map(category => (
+      {
+        value: category.id,
+        title: `${category.title} (${category.toDoListTotal})`,
+        icon: category.icon
+      }
+    )))
   }
 }
 

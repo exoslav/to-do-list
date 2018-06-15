@@ -11,7 +11,8 @@ export const input = {
 }
 
 export const label = {
-  alignSelf: 'flex-start',
+  display: 'block',
   marginBottom: 10,
-  fontWeight: 700
+  fontWeight: 700,
+  cursor: 'pointer'
 }

@@ -56,6 +56,7 @@ export default class Input extends React.PureComponent {
         </label>
 
         <input
+          ref={this.props.setRef}
           id={this.props.name}
           name={this.props.name}
           type={this.props.type}

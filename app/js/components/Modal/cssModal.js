@@ -14,8 +14,8 @@ export default {
   },
   button: {
     position: 'absolute',
-    right: '-20px',
-    top: '-20px',
+    right: 0,
+    top: 0,
     padding: 0,
     border: 'none',
     background: 'none',

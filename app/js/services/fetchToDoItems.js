@@ -20,14 +20,8 @@ export const addToDoItem = (newItem) => {
       items.push(newItem)
 
       window.localStorage.toDoItems = JSON.stringify(items)
-
-      return newItem
     }
 
     window.localStorage.toDoItems = JSON.stringify([newItem])
-
-    return newItem
   }
-
-  return newItem
 }

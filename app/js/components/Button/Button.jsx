@@ -17,14 +17,16 @@ const Button = props => (
 Button.defaultProps = {
   type: 'submit',
   click: () => null,
-  classes: {}
+  classes: {},
+  css: {}
 }
 
 Button.propTypes = {
   type: PropTypes.string,
   click: PropTypes.func,
   content: PropTypes.string.isRequired,
-  classes: PropTypes.shape({})
+  classes: PropTypes.shape({}),
+  css: PropTypes.shape({})
 }
 
 export default injectSheet(css)(Button)

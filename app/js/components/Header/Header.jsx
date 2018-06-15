@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 
 import css from './stylesHeader.scss'
 import Button from '../Button/Button'
@@ -11,7 +10,6 @@ import PercentageCircle from '../PercentageCircle/PercentageCircle'
 
 const Header = props => (
   <header class={css.header}>
-    {console.log(props)}
     <Container customClass={css.container}>
       <div class={css.leftSide}>
         <div class={css.content}>
@@ -44,18 +42,11 @@ const Header = props => (
             <span>{`${props.completed}% done`}</span>
           </div>
 
-          {console.log(props)}
-
-          <Link
-            to="/test"
-          >
-            Open modal
-          </Link>
-
           <Button
             click={props.handleCreateToDoClick}
             content="Create todo"
             class={css.button}
+            css={{ width: '100%' }}
           />
         </div>
       </div>

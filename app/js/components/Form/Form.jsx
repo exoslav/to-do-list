@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import css from './stylesForm.scss'
+import injectSheet from 'react-jss'
+
+import css from './cssForm'
 import Button from '../Button/Button'
 import Input from '../Input/Input'
 import Select from '../Select/Select'
 import SelectTime from '../SelectTime/SelectTime'
 
-export default class Form extends React.PureComponent {
+class Form extends React.PureComponent {
   constructor() {
     super()
 
@@ -14,6 +16,9 @@ export default class Form extends React.PureComponent {
       formData: {}
     }
 
+    this.fieldRefs = []
+
+    this.setRef = this.setRef.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleOnChange = this.handleOnChange.bind(this)
   }
@@ -21,7 +26,7 @@ export default class Form extends React.PureComponent {
   handleSubmit(e) {
     e.preventDefault()
 
-    this.props.handleSubmit(this.state.formData)
+    this.props.onSubmit(this.state.formData)
   }
 
   handleOnChange(name, value) {
@@ -33,74 +38,79 @@ export default class Form extends React.PureComponent {
     this.setState({ formData })
   }
 
+  setRef(el) {
+    this.fieldRefs.push(el)
+  }
+
   render() {
+    console.log(this.fieldRefs.map(field => console.log(field.name)))
+    const { classes } = this.props
+
     return (
-      <div class={css['form-wrap']}>
+      <div class={classes.formWrap}>
         <form
-          class={css.form}
+          class={classes.form}
           onSubmit={this.handleSubmit}
           action="/"
         >
           {
             this.props.title &&
-            <div class={css.header}>
-              <h3 class={css.title}>{this.props.title}</h3>
+            <div class={classes.header}>
+              <h3 class={classes.title}>{this.props.title}</h3>
             </div>
           }
 
-          <div class={css.content}>
+          <div class={classes.content}>
             {
               this.props.fields.map((field, index) => {
-                if (field.type === 'text') {
-                  return (
-                    <Input
-                      class="width50"
-                      label={field.label}
-                      type={field.type}
-                      name={field.name}
-                      value={this.state.formData[field.name]}
-                      placeholder={field.placeholder}
-                      handleChange={this.handleOnChange}
-                    />
-                  )
-                }
+                return (
+                  <div class={classes.formField}>
+                    {
+                      field.type === 'text' &&
+                      <Input
+                        setRef={this.setRef}
+                        label={field.label}
+                        type={field.type}
+                        name={field.name}
+                        value={this.state.formData[field.name]}
+                        placeholder={field.placeholder}
+                        handleChange={this.handleOnChange}
+                      />
+                    }
 
-                if (field.type === 'select') {
-                  return (
-                    <Select
-                      class="width50"
-                      label={field.label}
-                      type={field.type}
-                      name={field.name}
-                      options={field.options}
-                      value={this.state.formData[field.name]}
-                      placeholder={field.placeholder}
-                      handleChange={this.handleOnChange}
-                    />
-                  )
-                }
+                    {
+                      field.type === 'select' &&
+                      <Select
+                        label={field.label}
+                        type={field.type}
+                        name={field.name}
+                        options={field.options}
+                        value={this.state.formData[field.name]}
+                        placeholder={field.placeholder}
+                        handleChange={this.handleOnChange}
+                      />
+                    }
 
-                if (field.type === 'selectTime') {
-                  return (
-                    <SelectTime
-                      name={field.name}
-                      options={field.options}
-                      dateValue={this.state.formData[`${field.name}-date`]}
-                      hoursValue={this.state.formData[`${field.name}-hours`]}
-                      minutesValue={this.state.formData[`${field.name}-minutes`]}
-                      handleChange={this.handleOnChange}
-                    />
-                  )
-                }
-
-                return null
+                    {
+                      field.type === 'selectTime' &&
+                      <SelectTime
+                        name={field.name}
+                        options={field.options}
+                        dateValue={this.state.formData[`${field.name}-date`]}
+                        hoursValue={this.state.formData[`${field.name}-hours`]}
+                        minutesValue={this.state.formData[`${field.name}-minutes`]}
+                        handleChange={this.handleOnChange}
+                      />
+                    }
+                  </div>
+                )
               })
             }
           </div>
 
-          <div class={css.footer}>
+          <div class={classes.footer}>
             <Button
-              class="widthAuto"
+              css={{ width: 'auto' }}
               type="submit"
               content="Add ToDo"
             />
@@ -113,10 +123,14 @@ export default class Form extends React.PureComponent {
 
 Form.defaultProps = {
   title: null,
-  fields: []
+  fields: [],
+  classes: {}
 }
 
 Form.propTypes = {
   title: PropTypes.string,
-  fields: PropTypes.arrayOf({})
+  fields: PropTypes.arrayOf({}),
+  classes: PropTypes.shape({})
 }
+
+export default injectSheet(css)(Form)
